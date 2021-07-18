@@ -10,6 +10,15 @@
     <script src="Build/UnityLoader.js"></script>
     <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/game.json", {onProgress: UnityProgress});
+      window.addEventListener("resize",onResize);
+      
+      function onResize()
+      {
+        gameInstance.SendMessage("Text","SetWidth",window.innerWidth);
+        gameInstance.SendMessage("Text","SetHeight",window.innerHeight);
+        gameInstance.SendMessage("Text","OnResize");
+      }
+      
     </script>
   </head>
   
